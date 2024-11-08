@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  role_name: bitwarden_password_rotation
+  namespace: awx_aap_ansible
+  author: ASP
+  description: Role for managing Linux root passwords through Bitwarden
+  license: MIT
+
+  min_ansible_version: "2.9"
+
+  platforms:
+    - name: EL  # Enterprise Linux
+      versions:
+        - "8"
+        - "9"
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+
+  galaxy_tags:
+    - password
+    - security
+    - bitwarden
+    - linux
+
+dependencies: []
