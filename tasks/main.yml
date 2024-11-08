@@ -6,7 +6,7 @@
     file: api_setup.yaml
 
 - name: Password rotation tasks
-  include_tasks: rotate_password.yaml
+  include_tasks: rotate_passwords.yaml
   when: operation == 'rotate'
 
 - name: Create Bitwarden entry
