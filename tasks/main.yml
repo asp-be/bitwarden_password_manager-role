@@ -1,0 +1,18 @@
+---
+# tasks file for awx.bitwarden_password_manager
+
+- name: Setup API
+  include_tasks:
+    file: api_setup.yml
+
+- name: Password rotation tasks
+  include_tasks: rotate_password.yml
+  when: operation == 'rotate'
+
+- name: Create Bitwarden entry
+  include_tasks: create_entry.yml
+  when: operation == 'create'
+
+- name: Delete Bitwarden entry
+  include_tasks: delete_entry.yml
+  when: operation == 'delete'

@@ -1,0 +1,36 @@
+- name: API REQUEST - UPDATE ENTRY
+  uri:
+    url: http://localhost:8087/object/item/{{ entry_id }}
+    method: PUT 
+    body_format: json
+    body: |
+      {
+        "organizationId": "d85badfd-d9d4-483f-a94e-b1e600ab66d6",
+        "collectionIds": ["ea1f0b48-cf9d-4675-8c03-b22000d479a0"],
+        "folderId": null,
+        "type": 1,
+        "name": "{{ target_name }} - root - VCENTER",
+        "notes": "## ANSIBLE MANAGED, PLEASE DO NOT MODIFY ##\n## BACKUP ACCOUNT, ACCESS VIA VCENTER ##",
+        "favorite": false,
+        "fields": [
+          {
+            "name": "Last updated",
+            "value": "{{ ansible_date_time.iso8601 }}",
+            "type": 0
+          },
+          {
+            "name": "VM Name",
+            "value": "{{ target_name }}",
+            "type": 0
+          }
+        ],
+        "login": {
+          "username": "{{ login }}",
+          "password": "{{ new_password }}",
+          "totp": null,
+          "uris": []
+        },
+        "reprompt": 0
+      }
+    status_code: 200
+  delegate_to: localhost

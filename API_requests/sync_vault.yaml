@@ -1,0 +1,6 @@
+- name: API REQUEST - SYNC VAULT
+  uri:
+    url: "http://localhost:8087/sync"
+    method: POST
+    validate_certs: false
+  delegate_to: localhost

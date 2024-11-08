@@ -1,0 +1,7 @@
+---
+- name: API REQUEST - LOCK VAULT
+  uri:
+    url: "http://localhost:8087/lock"
+    method: POST
+    status_code: 200
+  delegate_to: localhost

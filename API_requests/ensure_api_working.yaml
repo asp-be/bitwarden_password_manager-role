@@ -1,0 +1,10 @@
+- name: Wait for API to be reachable
+  uri:
+    url: "http://localhost:8087/status"
+    method: GET
+    status_code: 200
+  register: api_status
+  until: api_status.status == 200
+  retries: 20
+  delay: 10
+  delegate_to: localhost

@@ -1,0 +1,12 @@
+---
+- name: API REQUEST - UNLOCK VAULT
+  uri:
+    url: "http://localhost:8087/unlock"
+    method: POST
+    body_format: json
+    body: |
+      {
+        "password": "{{ password }}"
+      }
+    status_code: 200
+  delegate_to: localhost
