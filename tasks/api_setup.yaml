@@ -21,11 +21,11 @@
 
 - name: Wait for API to be reachable
   ansible.builtin.include_tasks:
-    file: api_requests/ensure_api_working.yaml
+    file: "{{ role_path }}/API_requests/ensure_api_working.yaml"
 
 - name: Unlock vault via API
   ansible.builtin.include_tasks:
-    file: api_requests/unlock_vault.yaml
+    file: "{{ role_path }}/API_requests/unlock_vault.yaml"
 
 - name: Set other facts
   set_fact:
@@ -36,4 +36,4 @@
 
 - name: Sync vault via API
   ansible.builtin.include_tasks:
-    file: api_requests/sync_vault.yaml
+    file: "{{ role_path }}/API_requests/sync_vault.yaml"
