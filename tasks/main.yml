@@ -3,16 +3,16 @@
 
 - name: Setup API
   include_tasks:
-    file: api_setup.yml
+    file: api_setup.yaml
 
 - name: Password rotation tasks
-  include_tasks: rotate_password.yml
+  include_tasks: rotate_password.yaml
   when: operation == 'rotate'
 
 - name: Create Bitwarden entry
-  include_tasks: create_entry.yml
+  include_tasks: create_entry.yaml
   when: operation == 'create'
 
 - name: Delete Bitwarden entry
-  include_tasks: delete_entry.yml
+  include_tasks: delete_entry.yaml
   when: operation == 'delete'
