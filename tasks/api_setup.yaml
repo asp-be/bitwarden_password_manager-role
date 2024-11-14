@@ -25,13 +25,11 @@
 - name: Wait for API to be reachable
   ansible.builtin.include_tasks:
     file: "{{ role_path }}/API_requests/ensure_api_working.yaml"
-  delegate_to: localhost
 
 - name: Unlock vault via API
   ansible.builtin.include_tasks:
     file: "{{ role_path }}/API_requests/unlock_vault.yaml"
   when: api_status != "unlocked"
-  delegate_to: localhost
 
 - name: Set other facts
   set_fact:
@@ -43,4 +41,3 @@
 - name: Sync vault via API
   ansible.builtin.include_tasks:
     file: "{{ role_path }}/API_requests/sync_vault.yaml"
-  delegate_to: localhost
