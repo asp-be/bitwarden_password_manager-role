@@ -2,6 +2,7 @@
 - name: Switch to Bitwarden EU servers
   command: /usr/local/bin/bw config server https://vault.bitwarden.eu
   delegate_to: localhost
+  when: api_status == "not_working"
 
 - name: Login to Bitwarden with API key
   command: /usr/local/bin/bw login --apikey
@@ -11,6 +12,7 @@
   register: login_result
   no_log: false #TODO: CHANGEME
   delegate_to: localhost
+  when: api_status != 200
 
 - name: Start Bitwarden server
   command: /usr/local/bin/bw serve
@@ -18,20 +20,23 @@
   poll: 0
   register: bw_server
   delegate_to: localhost
+  when: api_status != 200
 
 - name: Wait for API to be reachable
   ansible.builtin.include_tasks:
     file: "{{ role_path }}/API_requests/ensure_api_working.yaml"
+  when: api_status != 200
 
 - name: Unlock vault via API
   ansible.builtin.include_tasks:
     file: "{{ role_path }}/API_requests/unlock_vault.yaml"
+  when: api_status != 200
 
 - name: Set other facts
   set_fact:
     workflow_id: "{{ controller_workflow_job_id | default('manual') }}"
     start_timestamp: "{{ lookup('pipe', 'date +%Y-%m-%d_%H-%M-%S') }}"
-    cacheable: false #TODO: CHANGEME
+    cacheable: false
   delegate_to: localhost
 
 - name: Sync vault via API

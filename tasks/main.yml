@@ -1,6 +1,10 @@
 ---
 # tasks file for awx.bitwarden_password_manager
 
+- name: Set role facts
+  set_facts:
+    api_status: not_working
+
 - name: Setup API
   include_tasks:
     file: api_setup.yaml
