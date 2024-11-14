@@ -2,7 +2,7 @@
 - name: Switch to Bitwarden EU servers
   command: /usr/local/bin/bw config server https://vault.bitwarden.eu
   delegate_to: localhost
-  when: api_status != "unlocked"
+  when: vault_status != "unlocked"
 
 - name: Login to Bitwarden with API key
   command: /usr/local/bin/bw login --apikey
@@ -12,7 +12,7 @@
   register: login_result
   no_log: true
   delegate_to: localhost
-  when: api_status != "unlocked"
+  when: vault_status != "unlocked"
 
 - name: Start Bitwarden server
   command: /usr/local/bin/bw serve
@@ -20,7 +20,7 @@
   poll: 0
   register: bw_server
   delegate_to: localhost
-  when: api_status != "unlocked"
+  when: vault_status != "unlocked"
 
 - name: Wait for API to be reachable
   ansible.builtin.include_tasks:
@@ -29,7 +29,7 @@
 - name: Unlock vault via API
   ansible.builtin.include_tasks:
     file: "{{ role_path }}/API_requests/unlock_vault.yaml"
-  when: api_status != "unlocked"
+  when: vault_status != "unlocked"
 
 - name: Set other facts
   set_fact:
