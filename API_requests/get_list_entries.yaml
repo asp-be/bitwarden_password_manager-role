@@ -3,5 +3,4 @@
     url: "http://localhost:8087/list/object/items?collectionId=ea1f0b48-cf9d-4675-8c03-b22000d479a0"
     method: GET
     status_code: 200
-  register: netbox_linux_root_entries
   delegate_to: localhost
