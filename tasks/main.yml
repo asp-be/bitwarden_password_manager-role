@@ -14,7 +14,7 @@
 - name: Setup API if needed
   include_tasks: api_setup.yaml
 
-- name: BW API CALL - Read Bitwarden entries
+- name: BW API CALL - Read all Bitwarden entries
   include_tasks: "{{ role_path }}/API_requests/get_list_entries.yaml"
   when: operation == 'read'
 
