@@ -9,7 +9,7 @@
         "collectionIds": ["ea1f0b48-cf9d-4675-8c03-b22000d479a0"],
         "folderId": null,
         "type": 1,
-        "name": "{{ target_name }} - root - VCENTER",
+        "name": "{{ vm_name }} - root - VCENTER",
         "notes": "## ANSIBLE MANAGED, PLEASE DO NOT MODIFY ##\n## BACKUP ACCOUNT, ACCESS VIA VCENTER ##",
         "favorite": false,
         "fields": [
@@ -20,7 +20,7 @@
           },
           {
             "name": "VM Name",
-            "value": "{{ target_name }}",
+            "value": "{{ vm_name }}",
             "type": 0
           }
         ],
