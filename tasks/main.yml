@@ -7,7 +7,7 @@
 
 - name: Password rotation tasks
   include_tasks: rotate_passwords.yaml
-  when: operation == 'rotate'
+  when: operation == 'update'
 
 - name: Create Bitwarden entry
   include_tasks: create_entry.yaml
