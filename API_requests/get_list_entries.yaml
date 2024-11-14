@@ -4,3 +4,8 @@
     method: GET
     status_code: 200
   delegate_to: localhost
+  register: api_response
+
+  - name: Set API response as fact
+  set_fact:
+    netbox_linux_root_entries: "{{ api_response }}"
