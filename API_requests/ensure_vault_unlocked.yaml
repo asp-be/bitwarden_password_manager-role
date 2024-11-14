@@ -8,4 +8,4 @@
 
 - name: Set role facts
   ansible.builtin.set_fact:
-    api_status: "{{ bw_status.json.data.template.status }}"
+    api_status: "{{ api_status.json.data.template.status }}"
