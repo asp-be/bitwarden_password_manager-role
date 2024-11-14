@@ -5,6 +5,10 @@
   include_tasks:
     file: api_setup.yaml
 
+- name: BW API CALL - Read Bitwarden entries
+  include_tasks: "{{ role_path }}/API_requests/get_list_entries.yaml"
+  when: operation == 'read'
+
 - name: BW API CALL - Update Bitwarden entry
   include_tasks: "{{ role_path }}/API_requests/update_entry.yaml"
   when: operation == 'update'
