@@ -9,7 +9,7 @@
     BW_CLIENTID: "{{ bw_client_id }}"
     BW_CLIENTSECRET: "{{ bw_client_secret }}"
   register: login_result
-  no_log: true
+  no_log: false #TODO: CHANGEME
   delegate_to: localhost
 
 - name: Start Bitwarden server
@@ -31,7 +31,7 @@
   set_fact:
     workflow_id: "{{ controller_workflow_job_id | default('manual') }}"
     start_timestamp: "{{ lookup('pipe', 'date +%Y-%m-%d_%H-%M-%S') }}"
-    cacheable: true
+    cacheable: false #TODO: CHANGEME
   delegate_to: localhost
 
 - name: Sync vault via API
