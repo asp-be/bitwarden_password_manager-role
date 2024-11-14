@@ -5,14 +5,14 @@
   include_tasks:
     file: api_setup.yaml
 
-- name: Password rotation tasks
-  include_tasks: rotate_passwords.yaml
+- name: BW API CALL - Update Bitwarden entry
+  include_tasks: "{{ role_path }}/API_requests/update_entry.yaml"
   when: operation == 'update'
 
-- name: Create Bitwarden entry
-  include_tasks: create_entry.yaml
+- name: BW API CALL - Create Bitwarden entry
+  include_tasks: "{{ role_path }}/API_requests/create_entry.yaml"
   when: operation == 'create'
 
-- name: Delete Bitwarden entry
-  include_tasks: delete_entry.yaml
+- name: BW API CALL - Delete Bitwarden entry #TODO: Not implemented yet
+  include_tasks: "{{ role_path }}/API_requests/delete_entry.yaml"
   when: operation == 'delete'
