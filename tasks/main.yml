@@ -1,16 +1,18 @@
 ---
 # tasks file for awx.bitwarden_password_manager
 
+- name: Vault status check
+  ansible.builtin.include_tasks:
+    file: "{{ role_path }}/API_requests/ensure_vault_unlocked.yaml"
+  when: vault_status is defined
+
 - name: Set initial vault status
   set_fact:
-    vault_status: "not_ready"
+    vault_status: "locked"
+  when: vault_status is not defined
 
-- name: Check vault status
-  include_tasks: "{{ role_path }}/API_requests/ensure_vault_unlocked.yaml"
-  
 - name: Setup API if needed
   include_tasks: api_setup.yaml
-  when: vault_status != "unlocked"
 
 - name: BW API CALL - Read Bitwarden entries
   include_tasks: "{{ role_path }}/API_requests/get_list_entries.yaml"
