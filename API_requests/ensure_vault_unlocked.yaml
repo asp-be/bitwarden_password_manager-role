@@ -1,0 +1,11 @@
+- name: Ensure vault is unlocked
+  uri:
+    url: "http://localhost:8087/status"
+    method: GET
+    status_code: 200
+  register: api_status
+  delegate_to: localhost
+
+- name: Set role facts
+  ansible.builtin.set_fact:
+    api_status: "{{ bw_status.json.data.template.status }}"

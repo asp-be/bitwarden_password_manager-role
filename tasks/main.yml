@@ -1,13 +1,16 @@
 ---
 # tasks file for awx.bitwarden_password_manager
 
-- name: Set role facts
-  set_facts:
-    api_status: not_working
+- name: Set initial vault status
+  set_fact:
+    vault_status: "not_ready"
 
-- name: Setup API
-  include_tasks:
-    file: api_setup.yaml
+- name: Check vault status
+  include_tasks: "{{ role_path }}/API_requests/ensure_vault_unlocked.yaml"
+  
+- name: Setup API if needed
+  include_tasks: api_setup.yaml
+  when: vault_status != "unlocked"
 
 - name: BW API CALL - Read Bitwarden entries
   include_tasks: "{{ role_path }}/API_requests/get_list_entries.yaml"
