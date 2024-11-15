@@ -5,8 +5,8 @@
     body_format: json
     body: |
       {
-        "organizationId": "d85badfd-d9d4-483f-a94e-b1e600ab66d6",
-        "collectionIds": ["ea1f0b48-cf9d-4675-8c03-b22000d479a0"],
+        "organizationId": "{{ organizationId }}",
+        "collectionIds": ["{{ collectionId }}"],
         "folderId": null,
         "type": 1,
         "name": "{{ vm_name }} - root - VCENTER",
