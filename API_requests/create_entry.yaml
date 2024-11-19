@@ -11,7 +11,7 @@
         "collectionIds": ["{{ collectionId }}"],
         "folderId": null,
         "type": 1,
-        "name": {{ vm_name }} - {{ login }},
+        "name": "{{ vm_name }} - {{ login }}",
         "notes": "{{ bw_notes }}",
         "favorite": false,
         "fields": [
