@@ -32,4 +32,4 @@
 
 - name: BW API CALL - Delete Bitwarden entry #TODO: Not implemented yet
   include_tasks: "{{ role_path }}/API_requests/delete_entry.yaml"
-  when: operation == 'delete'
+  when: operation == 'delete_entry'

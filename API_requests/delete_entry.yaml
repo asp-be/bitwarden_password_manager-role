@@ -1,0 +1,6 @@
+- name: API REQUEST - DELETE ENTRY
+  uri:
+    url: "http://localhost:8087/{{ entry_id }}"
+    method: DELETE
+    validate_certs: false
+  delegate_to: localhost
