@@ -10,7 +10,7 @@
     BW_CLIENTID: "{{ bw_client_id }}"
     BW_CLIENTSECRET: "{{ bw_client_secret }}"
   register: login_result
-  no_log: false
+  no_log: true
   delegate_to: localhost
   when: vault_status != "unlocked" 
   failed_when: >
