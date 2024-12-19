@@ -12,7 +12,7 @@
   register: login_result
   no_log: false
   delegate_to: localhost
-  when: vault_status != "unlocked"
+  when: vault_status != "unlocked" and 'You are logged in!' not in login_result.msg.stdout
 
 - name: Debug
   ansible.builtin.debug:
