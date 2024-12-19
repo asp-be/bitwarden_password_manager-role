@@ -9,7 +9,7 @@
         "collectionIds": ["{{ collectionId }}"],
         "folderId": null,
         "type": 1,
-        "name": "{{ vm_name }} - root - VCENTER",
+        "name": "{{ inventory_hostname }} - root - VCENTER",
         "notes": "## ANSIBLE MANAGED, PLEASE DO NOT MODIFY ##\n## BACKUP ACCOUNT, ACCESS VIA VCENTER ##",
         "favorite": false,
         "fields": [
@@ -20,7 +20,7 @@
           },
           {
             "name": "VM Name",
-            "value": "{{ vm_name }}",
+            "value": "{{ inventory_hostname }}",
             "type": 0
           }
         ],

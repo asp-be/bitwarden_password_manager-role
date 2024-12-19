@@ -11,7 +11,7 @@
         "collectionIds": ["{{ collectionId }}"],
         "folderId": null,
         "type": 1,
-        "name": "{{ vm_name }} - {{ login }} - {{ suffix }}",
+        "name": "{{ inventory_hostname }} - {{ login }} - {{ suffix }}",
         "notes": "{{ bw_notes }}",
         "favorite": false,
         "fields": [
@@ -22,7 +22,7 @@
           },
           {
             "name": "VM Name",
-            "value": "{{ vm_name }}",
+            "value": "{{ inventory_hostname }}",
             "type": 0
           }
         ],
