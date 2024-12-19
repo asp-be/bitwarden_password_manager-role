@@ -14,7 +14,7 @@
   delegate_to: localhost
   when: vault_status != "unlocked" 
   failed_when: >
-      "You are already logged in" not in login_result.stderr
+      login_result.rc != 0 and "You are already logged in" not in login_result.stderr
 
 - name: Start Bitwarden server
   command: /usr/local/bin/bw serve
