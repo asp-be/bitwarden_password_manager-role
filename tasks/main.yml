@@ -30,6 +30,6 @@
   include_tasks: "{{ role_path }}/API_requests/create_entry.yaml"
   when: operation == 'create'
 
-- name: BW API CALL - Delete Bitwarden entry #TODO: Not implemented yet
+- name: BW API CALL - Delete Bitwarden entry
   include_tasks: "{{ role_path }}/API_requests/delete_entry.yaml"
   when: operation == 'delete_entry'
