@@ -27,7 +27,7 @@ Dependencies
 
 Example Playbook
 ----------------
-
+```yaml
 - name: Read Bitwarden entries
       ansible.builtin.include_role:
         name: bitwarden_password_manager
@@ -53,7 +53,7 @@ Example Playbook
       loop: "{{ netbox_linux_root_entries.json.data.data }}"
       delegate_to: localhost
       no_log: true
-
+```
 License
 -------
 
