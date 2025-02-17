@@ -4,5 +4,5 @@ operation: changeme  # rotate, create, delete
 vm_name: ""       # Name of the VM
 login: root       # Root=default
 folder_id: null   
-organization_id: "d85badfd-d9d4-483f-a94e-b1e600ab66d6"  
-collection_ids: ["ea1f0b48-cf9d-4675-8c03-b22000d479a0"]  
+organization_id: ""  #Organization ID from Bitwarden, you can find it in the URL once logged in
+collection_ids: [""]  #collection id to manage, you can find it in the URL once logged in
