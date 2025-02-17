@@ -5,27 +5,54 @@ A simple role to interact with Bitwarden Password Manager
 
 Requirements
 ------------
-
+/
 
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Depending on the API call you want to do with BPM, you might need one of all of these:
+
+- operation: Needed to trigger the right API call
+  - read_password, read_collection, update, create, delete_entry
+- vm_name: The VM that will be the target for password rotation
+- login: BPM login
+- organization_id: Organization ID from Bitwarden, you can find it in the URL once logged in
+- collection_ids: collection id to manage, you can find it in the URL once logged in
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+/
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+- name: Read Bitwarden entries
+      ansible.builtin.include_role:
+        name: bitwarden_password_manager
+      vars:
+        operation: read_collection
+        organization_id: MyID
+        collection_id: MyCollectionID
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- name: Update password in Bitwarden
+      ansible.builtin.include_role:
+        name: bitwarden_password_manager
+      vars:
+        operation: update
+      no_log: true
+    
+- name: Find matching Bitwarden entry id
+      set_fact:
+        entry_id: "{{ item.id }}"
+        old_password: "{{ item.login.password | password_hash('sha512') }}"
+        login: "{{ item.login.username }}"
+      when: 
+        - item.fields | selectattr('name', 'equalto', 'VM Name') | map(attribute='value') | first == inventory_hostname
+      loop: "{{ netbox_linux_root_entries.json.data.data }}"
+      delegate_to: localhost
+      no_log: true
 
 License
 -------
@@ -35,4 +62,6 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+I'm a IT DevOps engineer, working @ ASP. You can contact me on my pro email address 
+
+florian.vanbelle@asp.be

@@ -1,6 +1,6 @@
 ---
 # defaults file for awx.bitwarden_password_manager
-operation: changeme  # rotate, create, delete
+operation: changeme  # read_password, read_collection, update, create, delete_entry
 vm_name: ""       # Name of the VM
 login: root       # Root=default
 folder_id: null   
